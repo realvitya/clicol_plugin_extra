@@ -46,6 +46,7 @@ setup(
     #],
     install_requires=[
         'clicol>=1.1.0',
+        'netaddr',
     ],
     entry_points={'clicol.plugins': [
         'MACVendor = clicol_plugin_extra.macvendor:MACVendor',
