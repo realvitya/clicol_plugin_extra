@@ -54,11 +54,24 @@ class MACVendor:
             org = self.org(mac)
             if org:
                 macdb[mac]=org
-        for mac in macdb.keys():
-            if self.outtype == 'inline':
+
+        if len(macdb) == 0:
+            return output
+
+        if self.outtype == 'inline':
+            for mac in macdb.keys():
                 output=output.replace(mac,"%s(%s)" % (mac,macdb[mac]))
-            #else:
-            #    output+="\t# MAC:%s" % macdb[mac]
+        else:
+            out = ""
+            #pudb.set_trace()
+            for line in output.splitlines(True):
+                for mac in macdb.keys():
+                    if mac in line:
+                        #  need to fix tabbing by checking line length
+                        line = line.replace("\r","\t\t\tMAC: %s\r" % (macdb[mac]))
+                out += line
+            output = out
+
         return output
 
     def test(self):
