@@ -18,7 +18,7 @@ class MACVendor:
     cmap = dict()
     setup = dict()
     regex = ()
-    outtype = "inline"
+    outtype = "append"
 
     def __init__(self, setup):
         (self.setup, self.cmap) = setup
