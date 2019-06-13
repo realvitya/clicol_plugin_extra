@@ -68,7 +68,7 @@ class MACVendor:
                 for mac in macdb.keys():
                     if mac in line:
                         #  need to fix tabbing by checking line length
-                        line = line.replace("\r","\t\t\tMAC: %s\r" % (macdb[mac]))
+                        line = line.replace("\r","\t%sMAC: %s\r" % ("\t" * ((81-len(line.lstrip('\b ')))//8),macdb[mac]))
                 out += line
             output = out
 
