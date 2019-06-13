@@ -19,6 +19,7 @@ class MACVendor:
     setup = dict()
     regex = ()
     outtype = "append"
+    column = 85
 
     def __init__(self, setup):
         (self.setup, self.cmap) = setup
@@ -28,24 +29,17 @@ class MACVendor:
         if 'outtype' in self.setup.keys():  #  Set output type (inline|append)
             if self.setup['outtype'] in ("inline", "append"):
                 self.outtype = self.setup['outtype']
+        if 'column' in self.setup.keys():  #  Set column for append
+            self.column = int(self.setup['column'])
 
     def org(self, mac=""):
-        #pudb.set_trace()
         obj = EUI(mac)
         try:
             return EUI(mac).oui.registration()['org']
         except:
             return None
-        """
-            for AS in aspath.group(3).split():
-                if AS in self.db.keys():
-                    aslist += "%s(%s%s%s) " % (AS, self.cmap['important_value'], self.db[AS], self.cmap['default'])
-                else:
-                    aslist += "%s " % AS
-            return "%s%s %s%s%s" % (aspath.group(1), aspath.group(2), aslist.rstrip(), aspath.group(4), aspath.group(5))
-        """
+
     def preprocess(self, input, effects=[]):
-        #pudb.set_trace()
         output = input
         macdb = dict()
         macs = self.regex[0].findall(input)
@@ -63,12 +57,16 @@ class MACVendor:
                 output=output.replace(mac,"%s(%s)" % (mac,macdb[mac]))
         else:
             out = ""
-            #pudb.set_trace()
+            #  clean regex for backspaced output on devices
+            r = re.compile('[\b]+ +[\b]+(.*)', re.UNICODE)
             for line in output.splitlines(True):
+                strippedline = line
+                match = r.match(line)
+                if match:
+                    strippedline = match.group(1)
                 for mac in macdb.keys():
                     if mac in line:
-                        #  need to fix tabbing by checking line length
-                        line = line.replace("\r","\t%sMAC: %s\r" % ("\t" * ((81-len(line.lstrip('\b ')))//8),macdb[mac]))
+                        line = line.replace("\r"," %s%sMAC: %s%s\r" % (" " * (self.column-len(strippedline)),self.cmap['description'],macdb[mac],self.cmap['default']))
                 out += line
             output = out
 
