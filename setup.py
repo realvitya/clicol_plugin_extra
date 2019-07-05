@@ -45,11 +45,12 @@ setup(
     #    ('share/doc/clicol', ['doc/bashrc','doc/clicol.cfg']),
     #],
     install_requires=[
-        'clicol>=1.1.0',
+        'clicol>=1.1.2-3',
         'netaddr',
     ],
     entry_points={'clicol.plugins': [
         'MACVendor = clicol_plugin_extra.macvendor:MACVendor',
+        'IPCalc    = clicol_plugin_extra.ipcalc:IPCalc',
                         ],
                  },
     classifiers=[

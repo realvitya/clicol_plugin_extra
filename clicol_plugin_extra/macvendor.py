@@ -39,7 +39,7 @@ class MACVendor:
         except:
             return None
 
-    def preprocess(self, input, effects=[]):
+    def plugin_preprocess(self, input, effects=[]):
         output = input
         macdb = dict()
         macs = self.regex[0].findall(input)
@@ -72,8 +72,8 @@ class MACVendor:
 
         return output
 
-    def test(self):
-        return ("plugin.macvendor", "\n preprocess:%s" % self.preprocess("""
+    def plugin_test(self):
+        return ("plugin.macvendor", "\n preprocess:%s" % self.plugin_preprocess("""
 Internet  10.253.226.154         14   3c61.04c6.12fc  ARPA   GigabitEthernet0/0/2.2\r
       320 9cf4.8ee4.f398  dynamic  Yes      300     Po1\r
 *     101 f8ca.b819.2dfc  dynamic  Yes        0     Po2\r
