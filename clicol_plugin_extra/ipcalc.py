@@ -41,6 +41,8 @@ class IPCalc:
     def plugin_command(self, cmd):
         if cmd == self.__IPCALC_KEY:
             str = input("\r" + " " * 100 + "\rIP: ")
+            #  Support 10.0.0.0 255.255.0.0 format
+            str = str.replace(" ", "/")
             print(self.showip(IPNetwork(str)))
 
     def plugin_help(self, command):
