@@ -81,9 +81,9 @@ class MACVendor:
                     if mac in line:
                         line = line.replace("\r", " %s%sMAC: %s%s\r" % (
                             " " * (self.column - len(strippedline)), self.cmap['description'], macdb[mac],
-                            self.cmap['default'])).encode().decode('unicode_escape')
+                            self.cmap['default']))
                 out += line
-            output = out
+            output = out.encode().decode('unicode_escape')
 
         return output
 
