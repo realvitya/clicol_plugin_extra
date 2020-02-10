@@ -41,9 +41,6 @@ setup(
     packages=find_packages(),
     package_data={},
 
-    #data_files=[
-    #    ('share/doc/clicol', ['doc/bashrc','doc/clicol.cfg']),
-    #],
     install_requires=[
         'clicol>=1.1.2-3',
         'netaddr',
