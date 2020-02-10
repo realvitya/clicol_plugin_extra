@@ -9,8 +9,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from builtins import input
 from netaddr import IPNetwork, IPAddress
-import re
-import os
+
 
 class IPCalc:
     loadonstart = True
@@ -23,7 +22,8 @@ class IPCalc:
     def __init__(self, setup):
         (self.setup, self.cmap) = setup
 
-    def showip(self, ip):
+    @staticmethod
+    def showip(ip):
         output = ""
         output += "ipaddress:\t%s\r\n" % ip.ip
         output += "network/nm:\t%s\r\n" % ip.cidr

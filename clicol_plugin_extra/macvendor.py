@@ -8,7 +8,6 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 import re
-import os
 
 from netaddr import *
 import pudb
@@ -78,4 +77,3 @@ Internet  10.253.226.154         14   3c61.04c6.12fc  ARPA   GigabitEthernet0/0/
       320 9cf4.8ee4.f398  dynamic  Yes      300     Po1\r
 *     101 f8ca.b819.2dfc  dynamic  Yes        0     Po2\r
 """))
-
