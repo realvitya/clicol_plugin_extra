@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 import re
 
 from netaddr import *
-import pudb
+
 
 class MACVendor:
     loadonstart = True
@@ -22,13 +22,14 @@ class MACVendor:
 
     def __init__(self, setup):
         (self.setup, self.cmap) = setup
-        self.regex = (re.compile(self.cmap['BOS']+r"(?<![:-])\b((?:[a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2})\b(?![:-])", re.M),
-                      re.compile(self.cmap['BOS']+r"(?<!\.)\b((?:[a-fA-F0-9]{4}\.){2}[a-fA-F0-9]{4})\b(?!\.)", re.M))
+        self.regex = (
+            re.compile(self.cmap['BOS'] + r"(?<![:-])\b((?:[a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2})\b(?![:-])", re.M),
+            re.compile(self.cmap['BOS'] + r"(?<!\.)\b((?:[a-fA-F0-9]{4}\.){2}[a-fA-F0-9]{4})\b(?!\.)", re.M))
 
-        if 'outtype' in self.setup.keys():  #  Set output type (inline|append)
+        if 'outtype' in self.setup.keys():  # Set output type (inline|append)
             if self.setup['outtype'] in ("inline", "append"):
                 self.outtype = self.setup['outtype']
-        if 'column' in self.setup.keys():  #  Set column for append
+        if 'column' in self.setup.keys():  # Set column for append
             self.column = int(self.setup['column'])
 
     def org(self, mac=""):
@@ -46,18 +47,18 @@ class MACVendor:
         for mac in macs:
             org = self.org(mac)
             if org:
-                macdb[mac]=org
+                macdb[mac] = org
 
         if len(macdb) == 0:
             return output
 
         if self.outtype == 'inline':
             for mac in macdb.keys():
-                output=output.replace(mac,"%s(%s)" % (mac,macdb[mac]))
+                output = output.replace(mac, "%s(%s)" % (mac, macdb[mac]))
         else:
             out = ""
             #  clean regex for backspaced output on devices
-            r = re.compile('[\b]+ +[\b]+(.*)', re.UNICODE)
+            r = re.compile(r'[\b]+ +[\b]+(.*)', re.UNICODE)
             for line in output.splitlines(True):
                 strippedline = line
                 match = r.match(line)
