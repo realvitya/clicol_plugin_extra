@@ -32,8 +32,8 @@ class MACVendor:
         if 'column' in self.setup.keys():  # Set column for append
             self.column = int(self.setup['column'])
 
-    def org(self, mac=""):
-        obj = EUI(mac)
+    @staticmethod
+    def org(mac=""):
         try:
             return EUI(mac).oui.registration()['org']
         except:
@@ -66,7 +66,9 @@ class MACVendor:
                     strippedline = match.group(1)
                 for mac in macdb.keys():
                     if mac in line:
-                        line = line.replace("\r"," %s%sMAC: %s%s\r" % (" " * (self.column-len(strippedline)),self.cmap['description'],macdb[mac],self.cmap['default']))
+                        line = line.replace("\r", " %s%sMAC: %s%s\r" % (
+                            " " * (self.column - len(strippedline)), self.cmap['description'], macdb[mac],
+                            self.cmap['default'])).encode().decode('unicode_escape')
                 out += line
             output = out
 
