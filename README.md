@@ -15,22 +15,22 @@ inline output:
 
 append output:
 
-     320 9cf4.8ee4.f398  dynamic  Yes      300     Po1                             MAC: Apple, Inc.
-     101 f8ca.b819.2dfc  dynamic  Yes        0     Po2                             MAC: Dell Inc.
+    320 9cf4.8ee4.f398  dynamic  Yes      300     Po1                             MAC: Apple, Inc.
+    101 f8ca.b819.2dfc  dynamic  Yes        0     Po2                             MAC: Dell Inc.
 
 ### ipcalc
-     After breaking and command 'I':
-     IP: 192.168.0.2 255.255.255.224                                                                   <
-     ipaddress:	192.168.0.2
-     network/nm:	192.168.0.0/27
-     prefixlen:	27
-     netmask:	255.255.255.224
-     wildcard:	0.0.0.31
-     network:	192.168.0.0
-     broadcast:	192.168.0.31
-     number of ips:	32 - 2 = 30
-     first host:	192.168.0.0
-     last host:	192.168.0.31
+    After breaking and command 'I':
+    IP: 192.168.0.2 255.255.255.224
+    ipaddress:	192.168.0.2
+    network/nm:	192.168.0.0/27
+    prefixlen:	27
+    netmask:	255.255.255.224
+    wildcard:	0.0.0.31
+    network:	192.168.0.0
+    broadcast:	192.168.0.31
+    number of ips:	32 - 2 = 30
+    first host:	192.168.0.0
+    last host:	192.168.0.31
 
 
 
