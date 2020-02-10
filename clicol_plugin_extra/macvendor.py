@@ -34,14 +34,25 @@ class MACVendor:
 
     @staticmethod
     def org(mac=""):
+        """
+        Finds OUI for MAC address
+        :param mac: input MAC address
+        :return: Organization name for the MAC
+        """
         try:
             return EUI(mac).oui.registration()['org']
         except:
             return None
 
     def plugin_preprocess(self, inputtext, effects=None):
-        if effects is None:
-            effects = []
+        """
+        Search and add MAC vendor data to input text
+        :param inputtext: Text to process
+        :param effects: not used here
+        :return: processed text
+        """
+        # if effects is None:
+        #    effects = []
         output = inputtext
         macdb = dict()
         macs = self.regex[0].findall(inputtext)
@@ -77,6 +88,10 @@ class MACVendor:
         return output
 
     def plugin_test(self):
+        """
+        Do plugin test
+        :return: Test output by this plugin
+        """
         return ("plugin.macvendor", "\n preprocess:%s" % self.plugin_preprocess("""
 Internet  10.253.226.154         14   3c61.04c6.12fc  ARPA   GigabitEthernet0/0/2.2\r
       320 9cf4.8ee4.f398  dynamic  Yes      300     Po1\r
