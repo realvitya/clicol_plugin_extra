@@ -71,7 +71,7 @@ class MACVendor:
         else:
             out = ""
             #  clean regex for backspaced output on devices
-            r = re.compile(r'[\b]+ +[\b]+(.*)', re.UNICODE)
+            r = re.compile(r"[\b]+ +[\b]+(.*)", re.UNICODE)
             for line in output.splitlines(True):
                 strippedline = line
                 match = r.match(line)
