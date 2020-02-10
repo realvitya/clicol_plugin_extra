@@ -32,7 +32,12 @@ append output:
     first host:	192.168.0.0
     last host:	192.168.0.31
 
-
+### dnsresolve
+    After breaking and command 'R':
+    IP/NAME: 8.8.8.8
+    Host: dns.google, aliases: [], ipaddrlist: ['8.8.8.8']
+    IP/NAME: github.com
+    Host: lb-140-82-118-4-ams.github.com, aliases: [], ipaddrlist: ['140.82.118.4']
 
 ## Configuration
 
@@ -48,5 +53,9 @@ Example with defaults:
      #outtype=inline
      
      [ipcalc]
+     # set 'no' to disable
+     #active=yes
+
+     [dnsresolve]
      # set 'no' to disable
      #active=yes

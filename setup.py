@@ -48,6 +48,7 @@ setup(
     entry_points={'clicol.plugins': [
         'MACVendor = clicol_plugin_extra.macvendor:MACVendor',
         'IPCalc    = clicol_plugin_extra.ipcalc:IPCalc',
+        'DNSresolve= clicol_plugin_extra.dnsresolve:DNSresolve',
                         ],
                  },
     classifiers=[
