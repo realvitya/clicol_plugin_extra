@@ -39,11 +39,13 @@ class MACVendor:
         except:
             return None
 
-    def plugin_preprocess(self, input, effects=[]):
-        output = input
+    def plugin_preprocess(self, inputtext, effects=None):
+        if effects is None:
+            effects = []
+        output = inputtext
         macdb = dict()
-        macs = self.regex[0].findall(input)
-        macs.extend(self.regex[1].findall(input))
+        macs = self.regex[0].findall(inputtext)
+        macs.extend(self.regex[1].findall(inputtext))
         for mac in macs:
             org = self.org(mac)
             if org:
