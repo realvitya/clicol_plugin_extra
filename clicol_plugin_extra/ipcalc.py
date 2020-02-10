@@ -33,7 +33,10 @@ class IPCalc:
             output += "wildcard:\t%s\r\n" % IPAddress(IPNetwork('255.255.255.255').value-ip.netmask.value)
         output += "network:\t%s\r\n" % ip.network
         output += "broadcast:\t%s\r\n" % ip.broadcast
-        output += "number of ips:\t%s - 2 = %s\r\n" % (len(ip), len(ip) - 2)
+        if len(ip) <= 2:
+            output += "number of ips:\t%s\r\n" % len(ip)
+        else:
+            output += "number of ips:\t%s - 2 = %s\r\n" % (len(ip), len(ip) - 2)
         output += "first host:\t%s\r\n" % IPAddress(ip.first)
         output += "last host:\t%s\r\n" % IPAddress(ip.last)
 
