@@ -42,8 +42,8 @@ class IPCalc:
             output += "number of ips:\t%s\r\n" % len(ip)
         else:
             output += "number of ips:\t%s - 2 = %s\r\n" % (len(ip), len(ip) - 2)
-        output += "first host:\t%s\r\n" % IPAddress(ip.first)
-        output += "last host:\t%s\r\n" % IPAddress(ip.last)
+        output += "first host:\t%s\r\n" % (ip[1] if len(ip) > 2 else ip[0])
+        output += "last host:\t%s\r\n" % (ip[-2] if len(ip) > 2 else ip[len(ip)-1])
 
         return output
 
