@@ -1,7 +1,6 @@
 CLICOL PLUGIN EXTRAS
 ====================
-Plugins for clicol which help troubleshooting
-These plugins have external dependencies
+Plugins for [clicol](https://github.com/realvitya/clicol) which help troubleshooting by integrating handy tools.
 
 ## Example
 
