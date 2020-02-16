@@ -29,8 +29,8 @@ append output:
     network:	192.168.0.0
     broadcast:	192.168.0.31
     number of ips:	32 - 2 = 30
-    first host:	192.168.0.0
-    last host:	192.168.0.31
+    first host:	192.168.0.1
+    last host:	192.168.0.30
 
 ### dnsresolve
     After breaking and command 'R':
