@@ -5,9 +5,6 @@
  example output:
  ...
 """
-from __future__ import print_function
-from __future__ import unicode_literals
-from builtins import input
 from netaddr import IPNetwork, IPAddress, AddrFormatError
 
 
@@ -38,12 +35,13 @@ class IPCalc:
             output += "wildcard:\t%s\r\n" % IPAddress(IPNetwork('255.255.255.255').value - ip.netmask.value)
         output += "network:\t%s\r\n" % ip.network
         output += "broadcast:\t%s\r\n" % ip.broadcast
-        if len(ip) <= 2:
-            output += "number of ips:\t%s\r\n" % len(ip)
+        size = ip.size
+        if size <= 2:
+            output += "number of ips:\t%s\r\n" % size
         else:
-            output += "number of ips:\t%s - 2 = %s\r\n" % (len(ip), len(ip) - 2)
-        output += "first host:\t%s\r\n" % (ip[1] if len(ip) > 2 else ip[0])
-        output += "last host:\t%s\r\n" % (ip[-2] if len(ip) > 2 else ip[len(ip)-1])
+            output += "number of ips:\t%s - 2 = %s\r\n" % (size, size - 2)
+        output += "first host:\t%s\r\n" % (ip[1] if size > 2 else ip[0])
+        output += "last host:\t%s\r\n" % (ip[-2] if size > 2 else ip[size-1])
 
         return output
 

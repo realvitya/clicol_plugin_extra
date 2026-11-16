@@ -58,3 +58,17 @@ Example with defaults:
      [dnsresolve]
      # set 'no' to disable
      #active=yes
+
+## Python compatibility and development
+
+Requires Python 3. Tested with Python 3.8 and 3.14.
+
+For development, use a shared virtual environment and install the updated
+`clicol` checkout and this plugin in editable mode:
+
+```sh
+python -m pip install -e /path/to/clicol -e .
+python -m unittest discover -s tests -v
+```
+
+Editable installation registers the plugin entry points used by `clicol`.

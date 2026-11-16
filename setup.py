@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     If you need to contact the author, you can do so by emailing:
-    vkertesz2 [~at~] gmail [/dot\] com
+    vkertesz2 [~at~] gmail [/dot\\] com
 """
 
 from setuptools import setup, find_packages
@@ -26,23 +26,25 @@ AUTHOR = "Viktor Kertesz"
 AUTHOR_EMAIL = "vkertesz2@gmail.com"
 URL = "https://github.com/realvitya/clicol_plugin_extra"
 VERSION = __import__(PACKAGE).__version__
-LONGDESCRIPTION=open("README.md").read()
+with open("README.md", encoding="utf-8") as readme:
+    LONGDESCRIPTION = readme.read()
 
 setup(
     name=NAME,
     version=VERSION,
+    python_requires=">=3",
     description=DESCRIPTION,
     long_description=LONGDESCRIPTION,
     long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
-    license="GPLv3",
+    license_expression="GPL-3.0-or-later",
     packages=find_packages(),
     package_data={},
 
     install_requires=[
-        'clicol>=1.1.2-3',
+        'clicol>=1.1.2.post3',
         'netaddr',
     ],
     entry_points={'clicol.plugins': [
@@ -57,11 +59,9 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: System Administrators",
         "Intended Audience :: Telecommunications Industry",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: POSIX",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.14",
     ],
     zip_safe=False,
 )
